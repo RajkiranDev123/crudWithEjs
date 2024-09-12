@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="w-full h-full bg-yellow-100 p-10">
+      <div class="nav mb-8">
+        <a class="text-black" href="/">Home</a>
+      </div>
+      <h1 class="text-3xl tracking-tighter mb-3">All Users</h1>
+
+      <div class="users flex gap-3 flex-wrap">
+        <% if (allUsers.length>0){%> <% allUsers.forEach(function(user){ %>
+
+        <div class="user max-w-72 p-1 bg-zinc-800 rounded-lg">
+          <div class="w-full h-52 rounded-lg bg-red-500 overflow-hidden">
+            <img
+              class="w-full h-full object-cover"
+              src="<%= user.image %>"
+              alt="hjgf"
+            />
+          </div>
+
+          <h3 class="text-2xl tracking-tighter text-white"><%=user.name%></h3>
+          <h5 class="text-1xl tracking-tighter text-white"><%=user.email%></h5>
+
+          <div class="flex gap-3 mt-9">
+            <a class="text-white" href="/edit/<%= user._id%>">Edit User</a>
+            <a class="text-red-200" href="/delete/<%= user._id%>"
+              >Delete User</a
+            >
+          </div>
+        </div>
+
+        <% })%> <%}else{%>
+
+        <p>No users</p>
+
+        <%} %>
+      </div>
+    </div>
+  </body>
+</html>
